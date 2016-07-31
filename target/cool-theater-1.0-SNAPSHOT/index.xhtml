@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>#{theaterBean.name}</title>
+        <meta name="author" content="The Author"></meta>
+        <link type="text/css" rel="stylesheet" 
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <h:outputStylesheet library="css" name="styles.css"  />
+    </h:head>
+    <h:body>
+        <div class="jumbotron home">
+            <div class="container">
+                <h1>#{theaterBean.name}</h1>
+            </div> 
+        </div>
+        <div class="container"> 
+            <div class="row">
+                <div class="col-md-12">
+                    <h:form styleClass="form-horizontal">
+                        <div class="input-group input-group-lg">
+                            <h:inputText  id="zipcode"  value="#{theaterBean.zipcode}" a:placeholder="Search for theaters" styleClass="form-control zipcode"  converterMessage="Please enter digits only."  />
+                            <span class="input-group-btn">
+                                <h:commandButton styleClass="btn btn-default"  action="#{theaterController.findTheaters}" value="Search" id="search">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </h:commandButton>
+                            </span>
+                        </div>
+                        <h:message styleClass="text-danger" showSummary="true" showDetail="false" for="zipcode"/>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </h:body>
+</html>
