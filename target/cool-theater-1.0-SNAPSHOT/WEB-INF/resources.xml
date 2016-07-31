@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<resources>
-  <Resource id="theaterPU" type="javax.sql.DataSource">#Sun Jul 31 13:01:25 CDT 2016
-jdbcDriver=org.apache.derby.jdbc.ClientDriver
-password=tiger
-userName=scott
-jdbcUrl=jdbc\:derby\://localhost\:1527/TheaterDB
-</Resource>
-</resources>

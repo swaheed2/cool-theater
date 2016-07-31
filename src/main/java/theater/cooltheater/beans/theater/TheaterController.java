@@ -52,7 +52,6 @@ public class TheaterController {
 
     public List<Theater> findTheaters(int zipcode) {
         return em.createNamedQuery("Theater.findByZipcode", Theater.class).setParameter("zipcode",zipcode).getResultList();
-
     }
 
     public int count() {
@@ -100,13 +99,18 @@ public class TheaterController {
 
     public void setTheaters(List<Theater> theaters) {
         this.theaters = theaters;
-    }
+    } 
     
-    
- 
     public String findTheaters(){
         System.out.println("zipcode: " + theaterBean.getZipcode());
         theaters = findTheaters(theaterBean.getZipcode()); 
         return "find-theaters?faces-redirect=true&amp;includeViewParams=true"; 
+    }
+    
+    public String findAll(){
+        System.out.println("zipcode: " + theaterBean.getZipcode());
+        theaterBean.setZipcode(null);
+        theaters = getAll(); 
+        return "find-theaters?faces-redirect=true&amp"; 
     }
 }

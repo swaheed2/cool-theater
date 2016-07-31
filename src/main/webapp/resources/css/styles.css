@@ -56,4 +56,12 @@ body{
 .theaters .panel{
      height: 300px !important;
      width: 100%;
+     margin-top: 50px;
 }
+.theaters .jumbotron{
+    margin-bottom: -40px;
+    background-color: rgba(0, 0, 0, 0.70);
+    color: white;
+}
+
+ 

@@ -2,31 +2,46 @@
                  xmlns="http://www.w3.org/1999/xhtml"
                  xmlns:h="http://xmlns.jcp.org/jsf/html"
                  xmlns:f="http://xmlns.jcp.org/jsf/core"
-                 xmlns:ui="http://java.sun.com/jsf/facelets">
+                 xmlns:ui="http://java.sun.com/jsf/facelets"
+                 xmlns:c="http://java.sun.com/jsp/jstl/core">
 
     <ui:define name="title">Find Theaters</ui:define>
 
     <ui:define name="content">
         <f:view>
-            <div class="row theaters"> 
-                <ui:repeat value="#{theaterController.theaters}" var="theater">
-                    <div class="col col-md-4">
-                        <div class="panel panel-primary"> 
-                            <div class="panel-heading"> 
-                                <h3 class="panel-title">#{theater.city}</h3> 
-                            </div> 
-                            <div class="panel-body">  
-                                <img src="#{theater.posterurl}" alt="" class="img-thumbnail  center-block" />
-                            </div> 
-                            <div class="panel-footer"> 
-                                #{theater.address} <br/>
-                                #{theater.city} #{theater.state} #{theater.zipcode}
+            <div class="theaters">
+                <div class="jumbotron">
+                    <h3>
+                        <h:outputLabel  rendered="#{theaterBean.zipcode == null}"> 
+                            Showing All Theaters
+                        </h:outputLabel> 
+                        <h:outputLabel  rendered="#{theaterBean.zipcode != null}"> 
+                            Showing Theaters in #{theaterBean.zipcode}
+                            <br/>
+                            <h:form>
+                                <h:commandButton styleClass="btn btn-outline-danger btn-sm"  action="#{theaterController.findAll}" value="Show All" id="search"></h:commandButton>
+                            </h:form>
+                        </h:outputLabel> 
+                    </h3>  
+                </div>
+                <div class="row"> 
+                    <ui:repeat value="#{theaterController.theaters}" var="theater">
+                        <div class="col col-md-4">
+                            <div class="card">
+                                <img class="card-img-top" src="#{theater.posterurl}" alt="" />
+                                    <div class="card-block">
+                                        <h4 class="card-title">#{theater.city}</h4>
+                                        <p class="card-text">
+                                            #{theater.address} <br/>
+                                            #{theater.city} #{theater.state} #{theater.zipcode}
+                                        </p>
+                                        <a href="#" class="btn btn-danger">Get Tickets</a>
+                                    </div>
                             </div> 
                         </div>
-                    </div>
-                </ui:repeat>
+                    </ui:repeat>
+                </div>
             </div>
-
         </f:view> 
     </ui:define>
 
