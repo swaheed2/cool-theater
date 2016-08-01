@@ -1,11 +1,11 @@
-INSERT INTO THEATER (ID,ADDRESS,CITY,"STATE","ZIPCODE")
-VALUES (1,'1342 Independence Pkwy','Plano','TX',75023);
+INSERT INTO "public".theater (ID,ADDRESS,CITY,"state","zipcode",posterurl)
+VALUES (1,'1342 Independence Pkwy','Plano','TX',75023,'http://www.thecityofcolumbus.com/images/movie-theaters.jpg');
 
-INSERT INTO THEATER (ID,ADDRESS,CITY,"STATE",ZIPCODE)
-VALUES (2,'5362 Custer Rd','Plano','TX',75023);
+INSERT INTO "public".theater (ID,ADDRESS,CITY,"state",zipcode,posterurl)
+VALUES (2,'5362 Custer Rd','Plano','TX',75023,'http://godfatherpolitics.com/wp-content/uploads/2012/03/movie-theater.jpg');
 
-INSERT INTO THEATER (ID,ADDRESS,CITY,"STATE",ZIPCODE)
-VALUES (3,'4263 Chase Oaks Rd','Plano','TX',75023);
+INSERT INTO "public".theater (ID,ADDRESS,CITY,"state",zipcode,posterurl)
+VALUES (3,'4263 Chase Oaks Rd','Plano','TX',75023,'https://g.foolcdn.com/editorial/images/155142/10826458684_08b57cb9d5_z_large.jpg');
 
-INSERT INTO THEATER (ID,ADDRESS,CITY,"STATE",ZIPCODE)
-VALUES (4,'5362 Dirby Rd','Frisco','TX',75035); 
+INSERT INTO "public".theater (ID,ADDRESS,CITY,"state",zipcode,posterurl)
+VALUES (4,'5362 Dirby Rd','Frisco','TX',75035,'http://www.classiccinemas.com/userimages/images/Lobby.jpg'); 
