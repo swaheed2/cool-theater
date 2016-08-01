@@ -8,7 +8,8 @@ package theater.cooltheater.beans;
 import javax.inject.Named; 
 import java.io.Serializable;
 import java.util.List;  
-import javax.enterprise.context.ApplicationScoped;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,7 +19,7 @@ import theater.cooltheater.pojo.Movie;
  *
  * @author Sumama
  */
-@Named(value = "movieController")
+@ManagedBean(name = "movieController")
 @ApplicationScoped
 public class MovieController implements Serializable {
 

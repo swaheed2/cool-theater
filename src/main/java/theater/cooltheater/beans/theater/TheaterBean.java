@@ -5,8 +5,9 @@
  */
 package theater.cooltheater.beans.theater;
 
-import java.io.Serializable;
-import javax.enterprise.context.ApplicationScoped;
+import java.io.Serializable; 
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
 import javax.inject.Named;  
 import javax.inject.Inject;
 
@@ -14,7 +15,7 @@ import javax.inject.Inject;
  *
  * @author Sumama
  */
-@Named(value = "theaterBean")
+@ManagedBean(name = "theaterBean")
 @ApplicationScoped
 public class TheaterBean implements Serializable{
 

@@ -7,8 +7,8 @@ package theater.cooltheater.beans.theater;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named; 
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean; 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext; 
@@ -18,7 +18,7 @@ import theater.cooltheater.pojo.Theater;
  *
  * @author Sumama
  */
-@Named(value = "theaterController")
+@ManagedBean(name = "theaterController")
 @ApplicationScoped
 public class TheaterController {
 

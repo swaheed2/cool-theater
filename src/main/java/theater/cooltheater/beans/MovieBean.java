@@ -5,17 +5,16 @@
  */
 package theater.cooltheater.beans;
 
-import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import java.util.Date; 
-import javax.enterprise.context.ApplicationScoped;
+import java.util.Date;  
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
 
 /**
  *
  * @author Sumama
  */
-@Named(value = "movieBean")
+@ManagedBean(name = "movieBean")
 @ApplicationScoped
 public class MovieBean implements Serializable {
  
