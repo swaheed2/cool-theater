@@ -1,0 +1,6 @@
+{
+  "name": "Cool Theater",
+  "description": "A modern theater web application using JSF and JPA.",
+  "image": "heroku/java",
+  "addons": [ "heroku-postgresql" ]
+}
