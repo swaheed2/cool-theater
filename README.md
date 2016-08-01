@@ -1,6 +1,6 @@
 # Cool Theater
 
-A sample modern web application built with JSF and JPA and deployed on Heroku.
+A sample modern web application built with JSF,JPA and Bootstrap 4.
 
 ## To run locally:
 
