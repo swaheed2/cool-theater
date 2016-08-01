@@ -6,4 +6,10 @@ password=tiger
 userName=scott
 jdbcUrl=jdbc\:derby\://localhost\:1527/TheaterDB
 </Resource>
+  <Resource id="theaterPUS" type="javax.sql.DataSource">#Sun Jul 31 22:55:40 CDT 2016
+jdbcDriver=org.postgresql.Driver
+password=8HGFOr3bBqgUN1FUt0vppF2iWl
+userName=wdsmwhrzlviadh
+jdbcUrl=jdbc\:postgresql\://ec2-23-21-55-25.compute-1.amazonaws.com/dfts3qj1jiad91
+</Resource>
 </resources>
