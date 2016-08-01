@@ -7,6 +7,7 @@ A sample modern web application built with JSF and JPA and deployed on Heroku.
 ### Requirements: 
 
 1) SSL
+
 2) This application uses a Postgres database from heroku. For security purposes, persistence.xml is hidden and not included in the code.
 
 Here is what persistence.xml looks like if you want to use your own credentials:
