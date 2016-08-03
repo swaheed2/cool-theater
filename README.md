@@ -1,6 +1,6 @@
 # Cool Theater
 
-A sample modern web application built with JSF and JPA and deployed on Heroku.
+A sample modern web application built with JSF,JPA and Bootstrap 4.
 
 ## To run locally:
 
@@ -36,3 +36,8 @@ Here is what persistence.xml looks like if you want to use your own credentials:
 ####Run:
 
 mvn package & java -jar target/dependency/webapp-runner.jar target/*.war
+
+##Demo:
+
+![Alt text](/screenshots/theaters.jpg?raw=true)
+![Alt text](/screenshots/main.jpg?raw=true)
