@@ -5,15 +5,17 @@
  */
 package theater.cooltheater.beans;
 
-import javax.inject.Named; 
 import java.io.Serializable;
-import java.util.List;  
+import java.util.List;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.inject.Inject;
+import javax.faces.bean.ManagedProperty;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import theater.cooltheater.beans.theater.TheaterBean;
 import theater.cooltheater.pojo.Movie;
+import theater.cooltheater.pojo.Theatermovie;
 
 /**
  *
@@ -23,17 +25,40 @@ import theater.cooltheater.pojo.Movie;
 @ApplicationScoped
 public class MovieController implements Serializable {
 
-    @PersistenceContext(unitName = "theaterPU")
-    private EntityManager em;
+    private EntityManagerFactory emf;
+    EntityManager em;
 
-    @Inject
+    @ManagedProperty(value = "#{movieBean}")
     MovieBean movieBean;
+
+    @ManagedProperty(value = "#{theaterBean}")
+    TheaterBean theaterBean;
+
+    List<Movie> movies = null;
+
+    Boolean isShowingMovies = false;
 
     /**
      * Creates a new instance of TheaterBean
      */
     public MovieController() {
+        emf = getEntityManagerFactory();
+        if (movies == null) {
+            movies = getAll();
+        }
+    }
 
+    //must povide the setter method
+    public void setMovieBean(MovieBean movieBean) {
+        this.movieBean = movieBean;
+    }
+
+    public TheaterBean getTheaterBean() {
+        return theaterBean;
+    }
+
+    public void setTheaterBean(TheaterBean theaterBean) {
+        this.theaterBean = theaterBean;
     }
 
     public Movie getMovie(long id) {
@@ -41,17 +66,32 @@ public class MovieController implements Serializable {
     }
 
     public List<Movie> getAll() {
-        return em.createNamedQuery("Movie.findAll", Movie.class).getResultList();
+        em = getEntityManager();
+        try {
+            movies = em.createNamedQuery("Movie.findAll", Movie.class).getResultList();
+            isShowingMovies = false;
+            return movies;
+        } finally {
+            em.close();
+        }
+    } 
 
+    public Boolean getIsShowingMovies() {
+        return isShowingMovies;
     }
 
-    public int count() {
-        List<Movie> movies = em.createNamedQuery("Movie.findAll", Movie.class).getResultList();
-        return movies.size();
+    public void setIsShowingMovies(Boolean isShowingMovies) {
+        this.isShowingMovies = isShowingMovies;
     }
+    
 
     public void delete(Movie m) {
-        em.remove(m);
+        em = getEntityManager();
+        try {
+            em.remove(m);
+        } finally {
+            em.close();
+        }
     }
 
     public void addMovie() {
@@ -62,10 +102,15 @@ public class MovieController implements Serializable {
         m.setMpaa(movieBean.getMpaa());
         m.setRating(movieBean.getRating());
         m.setReleaseYear(movieBean.getReleaseYear());
-        em.persist(m);
+        em = getEntityManager();
+        try {
+            em.persist(m);
+        } finally {
+            em.close();
+        }
     }
 
-    public int editMovie() {
+    public void editMovie() {
         Movie m = new Movie();
         movieBean.setDescription(m.getDescription());
         movieBean.setDuration(m.getDuration());
@@ -74,7 +119,41 @@ public class MovieController implements Serializable {
         movieBean.setRating(m.getRating());
         movieBean.setReleaseYear(m.getReleaseYear());
         movieBean.setTitle(m.getTitle());
-        em.merge(m);
-        return 0;
-    } 
+        em = getEntityManager();
+        try {
+            em.merge(m);
+        } finally {
+            em.close();
+        }
+    }
+
+    private EntityManagerFactory getEntityManagerFactory() {
+        if (emf == null) {
+            emf = Persistence.createEntityManagerFactory("theaterPU");
+        }
+        return emf;
+    }
+
+    private EntityManager getEntityManager() {
+        EntityManager entityManager = null;
+        if (null != emf) {
+            entityManager = emf.createEntityManager();
+        }
+
+        return entityManager;
+    }
+
+    public List<Movie> getMovies() {
+        return movies;
+    }
+
+    public void setMovies(List<Movie> movies) {
+        this.movies = movies;
+    }
+
+    public String findAll() {
+        isShowingMovies = true;
+        return "movies?faces-redirect=true&amp;includeViewParams=true";
+    }
+
 }

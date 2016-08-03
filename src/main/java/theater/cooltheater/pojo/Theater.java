@@ -6,23 +6,27 @@
 package theater.cooltheater.pojo;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author Sumama
  */
 @Entity
-@Table(name = "THEATER")
+@Table(name = "theater")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Theater.findAll", query = "SELECT t FROM Theater t"),
@@ -38,22 +42,26 @@ public class Theater implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "ID")
+    @Column(name = "id")
     private Integer id;
     @Size(max = 25)
-    @Column(name = "CITY")
+    @Column(name = "city")
     private String city;
-    @Column(name = "ZIPCODE")
+    @Column(name = "zipcode")
     private Integer zipcode;
     @Size(max = 100)
-    @Column(name = "ADDRESS")
+    @Column(name = "address")
     private String address;
     @Size(max = 2)
-    @Column(name = "STATE")
+    @Column(name = "state")
     private String state;
     @Size(max = 100)
-    @Column(name = "POSTERURL")
+    @Column(name = "posterurl")
     private String posterurl;
+    @OneToMany(mappedBy = "theaterid")
+    private Collection<Ticket> ticketCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "theater")
+    private Collection<Theatermovie> theatermovieCollection;
 
     public Theater() {
     }
@@ -108,6 +116,24 @@ public class Theater implements Serializable {
 
     public void setPosterurl(String posterurl) {
         this.posterurl = posterurl;
+    }
+
+    @XmlTransient
+    public Collection<Ticket> getTicketCollection() {
+        return ticketCollection;
+    }
+
+    public void setTicketCollection(Collection<Ticket> ticketCollection) {
+        this.ticketCollection = ticketCollection;
+    }
+
+    @XmlTransient
+    public Collection<Theatermovie> getTheatermovieCollection() {
+        return theatermovieCollection;
+    }
+
+    public void setTheatermovieCollection(Collection<Theatermovie> theatermovieCollection) {
+        this.theatermovieCollection = theatermovieCollection;
     }
 
     @Override

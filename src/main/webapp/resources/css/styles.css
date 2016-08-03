@@ -50,18 +50,23 @@ body{
 }
 
 .theaters img{ 
-     width: 100%;
-     height: 220px !important;
+    width: 100%;
+    height: 220px !important;
 }
 .theaters .panel{
-     height: 300px !important;
-     width: 100%;
-     margin-top: 50px;
+    height: 300px !important;
+    width: 100%;
+    margin-top: 50px;
 }
 .theaters .jumbotron{
     margin-bottom: -40px;
     background-color: rgba(0, 0, 0, 0.70);
     color: white;
 }
-
- 
+.btn-nav{
+    margin-top: 5px;
+}
+.movies-card-block{
+    height: 300px;
+    overflow: scroll;
+}

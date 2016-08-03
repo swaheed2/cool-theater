@@ -1,3 +1,42 @@
 heroku deploy:war target/cool-theater-1.0-SNAPSHOT.war --app cool-theater 
 
-mvn package & java -jar target/dependency/webapp-runner.jar target/*.war
+mvn package & java -jar target/dependency/webapp-runner.jar target/*.war 
+
+ 
+jdbc:postgresql://ec2-23-21-55-25.compute-1.amazonaws.com:5432/dfts3qj1jiad91?user=&password=&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
+
+jdbc:postgresql://ec2-107-20-214-225.compute-1.amazonaws.com:5432/databasename?user=someusername&password=somepassword&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
+
+alter table theatermovie 
+add constraint fk_theaterId
+foreign key (theaterId)
+references theater(id)
+
+ALTER TABLE theatermovie
+ADD CONSTRAINT pk_theatermovie PRIMARY KEY (id,movieid)
+
+@SecondaryTable(name = "Movie", pkJoinColumns=@PrimaryKeyJoinColumn(name="id", referencedColumnName="movieid"))
+
+ @Column(table="Movie", name="id")
+    private String id;
+    
+    @Column(table="Movie", name="posterurl")
+    private String posterurl;
+    
+    @Column(table="Movie", name="title")
+    private String title; 
+    
+    @Column(table="Movie", name="description")
+    private String description; 
+    
+    @Column(table="Movie", name="release_year")
+    private int releaseYear; 
+    
+    @Column(table="Movie", name="duration")
+    private String duration; 
+    
+    @Column(table="Movie", name="rating")
+    private int rating; 
+    
+    @Column(table="Movie", name="mpaa")
+    private String mpaa;

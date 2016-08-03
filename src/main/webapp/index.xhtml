@@ -2,8 +2,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
         <title>#{theaterBean.name}</title>
         <meta name="author" content="The Author"></meta>
         <link type="text/css" rel="stylesheet" 
@@ -21,14 +23,18 @@
                 <div class="col-md-12">
                     <h:form styleClass="form-horizontal">
                         <div class="input-group input-group-lg">
-                            <h:inputText  id="zipcode"  value="#{theaterBean.zipcode}" a:placeholder="Search for theaters" styleClass="form-control zipcode"  converterMessage="Please enter digits only."  />
+                            <h:inputText  id="zipcode"  value="#{theaterBean.zipcode}" a:placeholder="Search for theaters" styleClass="form-control zipcode"  converterMessage="Please enter digits only." >
+                                <f:validateLength minimum="5" maximum="5" />
+                            </h:inputText>
                             <span class="input-group-btn">
                                 <h:commandButton styleClass="btn btn-danger"  action="#{theaterController.findTheaters}" value="Search" id="search">
                                     <span class="glyphicon glyphicon-search"></span>
                                 </h:commandButton>
                             </span>
                         </div>
-                        <h:message styleClass="text-danger" showSummary="true" showDetail="false" for="zipcode"/>
+                        <div class="alert alert-danger" role="alert">
+                            <strong><h:message showSummary="true" showDetail="false" for="zipcode"/></strong>
+                        </div>
                     </h:form>
                 </div>
             </div>

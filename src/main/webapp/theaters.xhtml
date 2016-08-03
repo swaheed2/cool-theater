@@ -1,4 +1,4 @@
-<ui:composition  template="theater-template.xhtml"
+<ui:composition  template="main-template.xhtml"
                  xmlns="http://www.w3.org/1999/xhtml"
                  xmlns:h="http://xmlns.jcp.org/jsf/html"
                  xmlns:f="http://xmlns.jcp.org/jsf/core"
@@ -29,14 +29,16 @@
                         <div class="col col-md-4">
                             <div class="card">
                                 <img class="card-img-top" src="#{theater.posterurl}" alt="" />
-                                    <div class="card-block">
-                                        <h4 class="card-title">#{theater.city}</h4>
-                                        <p class="card-text">
-                                            #{theater.address} <br/>
-                                            #{theater.city} #{theater.state} #{theater.zipcode}
-                                        </p>
-                                        <a href="#" class="btn btn-danger">Get Tickets</a>
-                                    </div>
+                                <div class="card-block">
+                                    <h4 class="card-title">#{theater.city}</h4>
+                                    <p class="card-text">
+                                        #{theater.address} <br/>
+                                        #{theater.city} #{theater.state} #{theater.zipcode}
+                                    </p> 
+                                    <h:form>
+                                        <h:commandButton styleClass="btn btn-danger"  action="#{theaterController.findMoviesByTheater(theater.id)}" value="See Movies"></h:commandButton>
+                                    </h:form>
+                                </div>
                             </div> 
                         </div>
                     </ui:repeat>

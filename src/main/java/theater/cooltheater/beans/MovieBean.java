@@ -22,7 +22,7 @@ public class MovieBean implements Serializable {
     private String title; 
     private String description;  
     private int releaseYear; 
-    private Date duration; 
+    private String duration; 
     private int rating; 
     private String mpaa;
     
@@ -63,11 +63,11 @@ public class MovieBean implements Serializable {
         this.releaseYear = releaseYear;
     }
 
-    public Date getDuration() {
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(Date duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 

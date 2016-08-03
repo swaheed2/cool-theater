@@ -14,7 +14,9 @@ import javax.faces.bean.ManagedProperty;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import theater.cooltheater.pojo.Movie;
 import theater.cooltheater.pojo.Theater;
+import theater.cooltheater.pojo.Theatermovie;
 
 /**
  *
@@ -32,15 +34,20 @@ public class TheaterController {
 
     String name;
 
-    List<Theater> theaters = new ArrayList<>();
+    Boolean findByTheater = false;
+
+    List<Theater> theaters = null;
 
     /**
      * Creates a new instance of TheaterBean
      */
     public TheaterController() {
         emf = getEntityManagerFactory();
+        if (theaters == null) {
+            theaters = getAll();
+        }
     }
- 
+
     private EntityManagerFactory getEntityManagerFactory() {
         if (emf == null) {
             emf = Persistence.createEntityManagerFactory("theaterPU");
@@ -66,6 +73,14 @@ public class TheaterController {
         return em.find(Theater.class, id);
     }
 
+    public Boolean getFindByTheater() {
+        return findByTheater;
+    }
+
+    public void setFindByTheater(Boolean findByTheater) {
+        this.findByTheater = findByTheater;
+    }
+
     public List<Theater> getAll() {
         em = getEntityManager();
         try {
@@ -79,6 +94,18 @@ public class TheaterController {
         em = getEntityManager();
         try {
             return em.createNamedQuery("Theater.findByZipcode", Theater.class).setParameter("zipcode", zipcode).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    public List<Theatermovie> getMoviesByTheater() {
+        em = getEntityManager();
+        try {
+            List<Theatermovie> mv = em.createNamedQuery("Theatermovie.findByTheaterid", Theatermovie.class)
+                    .setParameter("theaterid",theaterBean.getId()).getResultList();  
+            findByTheater = false;
+            return mv;
         } finally {
             em.close();
         }
@@ -134,14 +161,19 @@ public class TheaterController {
     public String findTheaters() {
         System.out.println("zipcode: " + theaterBean.getZipcode());
         theaters = findTheatersByZip(theaterBean.getZipcode());
-        return "find-theaters?faces-redirect=true&amp;includeViewParams=true";
+        return "theaters?faces-redirect=true&amp;includeViewParams=true";
     }
 
     public String findAll() {
-        System.out.println("zipcode: " + theaterBean.getZipcode());
         theaterBean.setZipcode(null);
         theaters = getAll();
-        return "find-theaters?faces-redirect=true&amp";
+        return "theaters?faces-redirect=true&amp";
+    }
+
+    public String findMoviesByTheater(int theaterid) {
+        findByTheater = true;
+        theaterBean.setId(theaterid);
+        return "movies?faces-redirect=true&amp";
     }
 
     @PreDestroy

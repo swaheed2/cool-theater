@@ -1,0 +1,40 @@
+<ui:composition  template="main-template.xhtml"
+                 xmlns="http://www.w3.org/1999/xhtml"
+                 xmlns:h="http://xmlns.jcp.org/jsf/html"
+                 xmlns:f="http://xmlns.jcp.org/jsf/core"
+                 xmlns:ui="http://java.sun.com/jsf/facelets"
+                 xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <ui:define name="title">Movies</ui:define>
+
+    <ui:define name="content">
+        <f:view>
+            <div class="theaters">
+                <div class="jumbotron">
+                    <h3>
+                        
+                    </h3>  
+                </div>
+                <div class="row"> 
+                    <ui:repeat value="#{movieController.movies}" var="movie">
+                        <div class="col col-md-4">
+                            <div class="card">
+                                <img class="card-img-top" src="#{movie.posterurl}" alt="" />
+                                    <div class="card-block">
+                                        <h4 class="card-title">#{movie.title}</h4>
+                                        <p class="card-text">
+                                            #{movie.description} <br/>
+                                            #{movie.releaseyear} #{movie.mpaa} #{movie.duration}
+                                        </p>
+                                        <a href="#" class="btn btn-danger">Get Tickets</a>
+                                    </div>
+                            </div> 
+                        </div>
+                    </ui:repeat>
+                </div>
+            </div>
+        </f:view> 
+    </ui:define>
+
+</ui:composition>
+

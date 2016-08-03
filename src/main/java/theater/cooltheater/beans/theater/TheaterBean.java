@@ -25,10 +25,7 @@ public class TheaterBean implements Serializable{
     String city;
     String state;
     Integer zipcode;
-    String posterurl;
-    
-    @Inject
-    TheaterBean theaterController;
+    String posterurl; 
     
     /**
      * Creates a new instance of TheaterBean

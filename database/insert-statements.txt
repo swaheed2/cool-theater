@@ -9,3 +9,80 @@ VALUES (3,'4263 Chase Oaks Rd','Plano','TX',75023,'https://g.foolcdn.com/editori
 
 INSERT INTO "public".theater (ID,ADDRESS,CITY,"state",zipcode,posterurl)
 VALUES (4,'5362 Dirby Rd','Frisco','TX',75035,'http://www.classiccinemas.com/userimages/images/Lobby.jpg'); 
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+INSERT INTO "public".movie (id, title, description, release_year, duration, rating, mpaa, posterurl) 
+	VALUES (1, 'Showtimes for Suicide Squad','Intelligence officer Amanda Waller (Viola Davis) decides to assemble a team of dangerous, incarcerated supervillains for a top-secret mission. Figuring it has nothing to lose, the U.S. government supplies weapons to Deadshot (Will Smith), Harley Quinn (Margot Robbie), Captain Boomerang (Jai Courtney) and other despicable inmates. Dubbed the Suicide Squad, the united criminals must defeat a mysterious and powerful entity while contending with the antics of the diabolical Joker (Jared Leto).',2016,'02:10',8,'PG-13','http://www.gstatic.com/tv/thumb/movieposters/11319046/p11319046_p_v8_af.jpg');
+	
+	INSERT INTO "public".movie (id, title, description, release_year, duration, rating, mpaa, posterurl) 
+	VALUES (2,'Star Trek Beyond','A surprise attack in outer space forces the Enterprise to crash-land on a mysterious world. The assault came from Krall (Idris Elba), a lizard-like dictator who derives his energy by sucking the life out of his victims. Krall needs an ancient and valuable artifact thats aboard the badly damaged starship. Left stranded in a rugged wilderness, Kirk (Chris Pine) Spock (Zachary Quinto) and the rest of the crew must now battle a deadly alien race while trying to find a way off their hostile planet.',2016,'02:02',8,'PG-13','http://blogs-images.forbes.com/markhughes/files/2016/07/STAR-TREK-BEYOND-5.jpeg');
+	
+	INSERT INTO "public".movie (id, title, description, release_year, duration, rating, mpaa, posterurl) 
+	VALUES (3,'The Legend of Tarzan','Its been nearly a decade since Tarzan (Alexander Skarsgård) also known as John Clayton III, left Africa to live in Victorian England with his wife Jane. Danger lurks on the horizon as Leon Rom (Christoph Waltz) a treacherous envoy for King Leopold, devises a scheme that lures the couple to the Congo. Rom plans to capture Tarzan and deliver him to an old enemy in exchange for diamonds. When Jane becomes a pawn in his devious plot, Tarzan must return to the jungle to save the woman he loves.',2016,'01:50',8,'PG-13','http://t3.gstatic.com/images?q=tbn:ANd9GcQtRrDe7rYAvquxY1gJnluBZGrs3SowQY8QFMaOnisNOrUEfTxM');
+	
+	INSERT INTO "public".movie (id, title, description, release_year, duration, rating, mpaa, posterurl) 
+	VALUES (4, 'Jason Bourne','Its been 10 years since Jason Bourne (Matt Damon) walked away from the agency that trained him to become a deadly weapon. Hoping to draw him out of the shadows, CIA director Robert Dewey assigns hacker and counterinsurgency expert Heather Lee to find him. Lee suspects that former operative Nicky Parsons is also looking for him. As she begins tracking the duo, Bourne finds himself back in action battling a sinister network that utilizes terror and technology to maintain unchecked power.',2016,'02:03',8,'PG-13','http://www.jasonbournemovie.com/images/share.jpg');
+	
+	INSERT INTO "public".movie (id, title, description, release_year, duration, rating, mpaa, posterurl) 
+	VALUES (5, 'Ghostbusters','Paranormal researcher Abby Yates (Melissa McCarthy) and physicist Erin Gilbert are trying to prove that ghosts exist in modern society. When strange apparitions appear in Manhattan, Gilbert and Yates turn to engineer Jillian Holtzmann for help. Also joining the team is Patty Tolan, a lifelong New Yorker who knows the city inside and out. Armed with proton packs and plenty of attitude, the four women prepare for an epic battle as more than 1,000 mischievous ghouls descend on Times Square.',2016,'01:57',8,'PG-13','http://t3.gstatic.com/images?q=tbn:ANd9GcQu6t289OZIOlPWU_AkeaL-3-kb2AywKUACnXSer1g_-pcpi0mi');
+
+INSERT INTO "public".movie (id, title, description, release_year, duration, rating, mpaa, posterurl) 
+	VALUES (6, 'Captain America: Civil War','Captain America: Civil War is a 2016 American superhero film featuring the Marvel Comics character Captain America, produced by Marvel Studios and distributed by Walt Disney Studios Motion Pictures. It is the sequel to 2011s Captain America: The First Avenger and 2014s Captain America: The Winter Soldier, and the thirteenth film of the Marvel Cinematic Universe (MCU). The film is directed by Anthony and Joe Russo, with a screenplay by Christopher Markus & Stephen McFeely, and features an ensemble cast, including Chris Evans, Robert Downey Jr., Scarlett Johansson, Sebastian Stan, Anthony Mackie, Don Cheadle, Jeremy Renner, Chadwick Boseman, Paul Bettany, Elizabeth Olsen, Paul Rudd, Emily VanCamp, Tom Holland, Frank Grillo, William Hurt and Daniel Brühl. In Captain America: Civil War, disagreement over international oversight of the Avengers fractures them into opposing factions—one led by Steve Rogers and the other by Tony Stark.',2016,'02:27',8,'PG-13','https://upload.wikimedia.org/wikipedia/en/5/53/Captain_America_Civil_War_poster.jpg');
+	
+	
+	INSERT INTO "public".movie (id, title, description, release_year, duration, rating, mpaa, posterurl) 
+	VALUES (7, '','',2016,'',8,'PG-13','')
+	
+	INSERT INTO "public".movie (id, title, description, release_year, duration, rating, mpaa, posterurl) 
+	VALUES (8, '','',2016,'',8,'PG-13','')
+
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+
+	
+INSERT INTO "public".theatermovie (id, movieid, notes) 
+	VALUES (1, 1, NULL)
+	
+INSERT INTO "public".theatermovie (id, movieid, notes) 
+	VALUES (1, 2, NULL)
+	
+INSERT INTO "public".theatermovie (id, movieid, notes) 
+	VALUES (1, 3, NULL)
+	
+INSERT INTO "public".theatermovie (id, movieid, notes) 
+	VALUES (1, 4, NULL)
+	
+INSERT INTO "public".theatermovie (id, movieid, notes) 
+	VALUES (1, 5, NULL)
+	
+INSERT INTO "public".theatermovie (id, movieid, notes) 
+	VALUES (2, 2, NULL)
+	
+INSERT INTO "public".theatermovie (id, movieid, notes) 
+	VALUES (2, 3, NULL)
+	
+INSERT INTO "public".theatermovie (id, movieid, notes) 
+	VALUES (2, 4, NULL) 
+	
+INSERT INTO "public".theatermovie (id, movieid, notes) 
+	VALUES (3, 1, NULL)
+	
+INSERT INTO "public".theatermovie (id, movieid, notes) 
+	VALUES (3, 2, NULL)
+	
+INSERT INTO "public".theatermovie (id, movieid, notes) 
+	VALUES (3, 3, NULL)
+	
+INSERT INTO "public".theatermovie (id, movieid, notes) 
+	VALUES (4, 4, NULL)
+	
