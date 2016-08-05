@@ -3,7 +3,7 @@ heroku deploy:war target/cool-theater-1.0-SNAPSHOT.war --app cool-theater
 mvn package & java -jar target/dependency/webapp-runner.jar target/*.war 
 
  
-jdbc:postgresql://ec2-23-21-55-25.compute-1.amazonaws.com:5432/dfts3qj1jiad91?user=&password=&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
+jdbc:postgresql://ec2-23-21-55-25.compute-1.amazonaws.com:5432/dfts3qj1jiad91?user=wdsmwhrzlviadh&password=8HGFOr3bBqgUN1FUt0vppF2iWl&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
 
 jdbc:postgresql://ec2-107-20-214-225.compute-1.amazonaws.com:5432/databasename?user=someusername&password=somepassword&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
 

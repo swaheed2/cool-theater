@@ -10,7 +10,7 @@
     <ui:define name="content">
         <f:view>
             <div class="theaters">
-                <div class="jumbotron">
+                <div class="page-header jumbotron">
                     <h3>
                         <h:outputLabel  rendered="#{theaterBean.zipcode == null}"> 
                             Showing All Theaters
@@ -35,9 +35,7 @@
                                         #{theater.address} <br/>
                                         #{theater.city} #{theater.state} #{theater.zipcode}
                                     </p> 
-                                    <h:form>
-                                        <h:commandButton styleClass="btn btn-danger"  action="#{theaterController.findMoviesByTheater(theater.id)}" value="See Movies"></h:commandButton>
-                                    </h:form>
+                                    <a class="btn btn-danger" href="movies.jsf?faces-redirect=true&amp;isShowingMovies=false&amp;findByTheater=true&amp;id=#{theater.id}" id="isShowingMovies" >Show All</a> 
                                 </div>
                             </div> 
                         </div>

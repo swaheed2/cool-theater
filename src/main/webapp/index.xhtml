@@ -23,7 +23,9 @@
                 <div class="col-md-12">
                     <h:form styleClass="form-horizontal">
                         <div class="input-group input-group-lg">
-                            <h:inputText  id="zipcode"  value="#{theaterBean.zipcode}" a:placeholder="Search for theaters" styleClass="form-control zipcode"  converterMessage="Please enter digits only." >
+                            <h:inputText  id="zipcode"  value="#{theaterBean.zipcode}" a:placeholder="Search for theaters" 
+                                          styleClass="form-control zipcode"  
+                                          converterMessage="Please enter digits only." required="true" >
                                 <f:validateLength minimum="5" maximum="5" />
                             </h:inputText>
                             <span class="input-group-btn">

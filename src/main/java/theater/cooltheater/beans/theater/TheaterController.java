@@ -5,7 +5,6 @@
  */
 package theater.cooltheater.beans.theater;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PreDestroy;
 import javax.faces.bean.ApplicationScoped;
@@ -14,7 +13,7 @@ import javax.faces.bean.ManagedProperty;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import theater.cooltheater.pojo.Movie;
+import theater.cooltheater.beans.MovieController;
 import theater.cooltheater.pojo.Theater;
 import theater.cooltheater.pojo.Theatermovie;
 
@@ -31,6 +30,9 @@ public class TheaterController {
 
     @ManagedProperty(value = "#{theaterBean}")
     TheaterBean theaterBean;
+
+    @ManagedProperty(value = "#{movieController}")
+    MovieController movieController;
 
     String name;
 
@@ -64,13 +66,29 @@ public class TheaterController {
         return entityManager;
     }
 
+    public MovieController getMovieController() {
+        return movieController;
+    }
+
+    public void setMovieController(MovieController movieController) {
+        this.movieController = movieController;
+    }
+
     //must povide the setter method
     public void setTheaterBean(TheaterBean theaterBean) {
         this.theaterBean = theaterBean;
     }
 
-    public Theater getTheater(long id) {
-        return em.find(Theater.class, id);
+    public Theater getTheater(int id) {
+        em = getEntityManager();
+        try { 
+            return em.find(Theater.class, id);
+        } catch (Exception e) {
+            System.out.println("Exception: " + e.getMessage());
+            return null;
+        } finally {
+            em.close();
+        }
     }
 
     public Boolean getFindByTheater() {
@@ -103,8 +121,9 @@ public class TheaterController {
         em = getEntityManager();
         try {
             List<Theatermovie> mv = em.createNamedQuery("Theatermovie.findByTheaterid", Theatermovie.class)
-                    .setParameter("theaterid",theaterBean.getId()).getResultList();  
+                    .setParameter("theaterid", theaterBean.getId()).getResultList();
             findByTheater = false;
+            movieController.setIsShowingMovies(true);
             return mv;
         } finally {
             em.close();
@@ -130,16 +149,13 @@ public class TheaterController {
         em.persist(m);
     }
 
-    public int editTheater() {
-        Theater m = new Theater();
+    public void setTheater(Theater m) {
         theaterBean.setId(m.getId());
         theaterBean.setAddress(m.getAddress());
         theaterBean.setCity(m.getCity());
         theaterBean.setState(m.getState());
         theaterBean.setZipcode(m.getZipcode());
         theaterBean.setPosterurl(m.getPosterurl());
-        em.merge(m);
-        return 0;
     }
 
     public String getName() {
@@ -170,10 +186,12 @@ public class TheaterController {
         return "theaters?faces-redirect=true&amp";
     }
 
-    public String findMoviesByTheater(int theaterid) {
-        findByTheater = true;
-        theaterBean.setId(theaterid);
-        return "movies?faces-redirect=true&amp";
+    public void setTheater() {
+        Integer id = theaterBean.getId();
+        Theater theater = getTheater(id);
+        if (theater != null) {
+            setTheater(theater);
+        } 
     }
 
     @PreDestroy

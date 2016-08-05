@@ -9,6 +9,12 @@
 
     <ui:define name="content">
         <f:view>
+            <f:metadata>
+                <f:viewParam id="isShowingMovies" name="isShowingMovies" value="#{movieController.isShowingMovies}"></f:viewParam>  
+                <f:viewParam id="findByTheater" name="findByTheater" value="#{theaterController.findByTheater}"></f:viewParam>  
+                <f:viewParam id="id" name="id" value="#{theaterBean.id}"></f:viewParam>  
+                <f:viewAction action="#{theaterController.setTheater}" />
+            </f:metadata> 
             <div class="theaters">
                 <div class="jumbotron">
                     <h3>
@@ -16,11 +22,9 @@
                             Showing All Movies
                         </h:outputLabel> 
                         <h:outputLabel  rendered="#{theaterController.findByTheater == true}"> 
-                            Showing Movies for #{theaterBean.zipcode} theater
-                            <br/>
-                            <h:form>
-                                <h:commandButton styleClass="btn btn-outline-danger btn-sm"  action="#{theaterController.findAll}" value="Show All" id="search"></h:commandButton>
-                            </h:form>
+                            Showing Movies for theater in #{theaterBean.city} #{theaterBean.zipcode} 
+                            <br/> 
+                            <a class="btn btn-outline-danger btn-sm"  href="movies.jsf?faces-redirect=true&amp;isShowingMovies=true" id="isShowingMovies" >Show All</a> 
                         </h:outputLabel> 
                     </h3>  
                 </div>
@@ -36,7 +40,9 @@
                                             #{movie.description} <br/>
                                             #{movie.releaseYear} #{movie.mpaa} #{movie.duration}
                                         </p>
-                                        <a href="#" class="btn btn-danger">Get Tickets</a>
+                                    </div>
+                                    <div class="card-block">
+                                        <a href="movie-details.jsf?faces-redirect=true&amp;id=#{movie.id}" class="btn btn-danger">Get Ticket</a>
                                     </div>
                                 </div> 
                             </div>
@@ -52,8 +58,10 @@
                                         <p class="card-text">
                                             #{movie.description} <br/>
                                             #{movie.releaseYear} #{movie.mpaa} #{movie.duration}
-                                        </p>
-                                        <a href="#" class="btn btn-danger">Get Tickets</a>
+                                        </p> 
+                                    </div>
+                                    <div class="card-block">
+                                        <a href="movie-details.jsf?faces-redirect=true&amp;id=#{movie.id}" class="btn btn-danger">Get Ticket</a>
                                     </div>
                                 </div> 
                             </div>

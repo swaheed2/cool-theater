@@ -5,8 +5,9 @@
  */
 package theater.cooltheater.beans;
 
-import java.io.Serializable;
-import java.util.Date;  
+import java.io.Serializable; 
+import java.util.Date;
+import java.util.List;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
@@ -18,24 +19,27 @@ import javax.faces.bean.ManagedBean;
 @ApplicationScoped
 public class MovieBean implements Serializable {
  
-    private int id; 
+    private Integer id; 
     private String title; 
     private String description;  
     private int releaseYear; 
     private String duration; 
     private int rating; 
     private String mpaa;
+    String posterurl;
     
+    
+    List<Date> movieTimes;
     
     public MovieBean() {
         
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -86,7 +90,21 @@ public class MovieBean implements Serializable {
     public void setMpaa(String mpaa) {
         this.mpaa = mpaa;
     }
-    
-    
+
+    public String getPosterurl() {
+        return posterurl;
+    }
+
+    public void setPosterurl(String posterurl) {
+        this.posterurl = posterurl;
+    } 
+
+    public List<Date> getMovieTimes() {
+        return movieTimes;
+    }
+
+    public void setMovieTimes(List<Date> movieTimes) {
+        this.movieTimes = movieTimes;
+    } 
     
 }

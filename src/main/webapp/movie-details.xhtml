@@ -2,36 +2,83 @@
                  xmlns="http://www.w3.org/1999/xhtml"
                  xmlns:h="http://xmlns.jcp.org/jsf/html"
                  xmlns:f="http://xmlns.jcp.org/jsf/core"
-                 xmlns:ui="http://java.sun.com/jsf/facelets"
-                 xmlns:c="http://java.sun.com/jsp/jstl/core">
+                 xmlns:ui="http://java.sun.com/jsf/facelets">
 
-    <ui:define name="title">Movies</ui:define>
+    <ui:define name="title">Movies Details</ui:define>
 
     <ui:define name="content">
-        <f:view>
+        <f:view> 
+            <f:metadata>
+                <f:viewParam id="id" name="id" value="#{movieBean.id}"></f:viewParam> 
+                <f:viewAction action="#{movieController.setMovieDetails}" />
+            </f:metadata> 
             <div class="theaters">
                 <div class="jumbotron">
-                    <h3>
-                        
-                    </h3>  
-                </div>
-                <div class="row"> 
-                    <ui:repeat value="#{movieController.movies}" var="movie">
-                        <div class="col col-md-4">
-                            <div class="card">
-                                <img class="card-img-top" src="#{movie.posterurl}" alt="" />
-                                    <div class="card-block">
-                                        <h4 class="card-title">#{movie.title}</h4>
-                                        <p class="card-text">
-                                            #{movie.description} <br/>
-                                            #{movie.releaseyear} #{movie.mpaa} #{movie.duration}
-                                        </p>
-                                        <a href="#" class="btn btn-danger">Get Tickets</a>
-                                    </div>
+
+                    <h:outputLabel  rendered="#{movieBean.id == null}"> 
+                        <h3> No movie selected</h3> 
+                    </h:outputLabel> 
+                    <h:outputLabel  rendered="#{movieBean.id != null}">  
+                        <div class="row">
+                            <div class="col col-md-4">
+                                <img class="img-fluid" src="#{movieBean.posterurl}" alt="" />
                             </div> 
+                            <div class="col col-md-8"> 
+                                <div class="card" style="background: transparent">
+                                    <div class="card-header" style="background: transparent">
+                                        <h3>#{movieBean.title}</h3>
+                                    </div>
+                                    <div class="card-block" style="background: transparent"> 
+                                        <h4 class="card-text">
+                                            <span class="tag tag-default">#{movieBean.mpaa}</span> 
+                                            <span class="tag tag-primary">#{movieBean.releaseYear} </span> 
+                                            <span class="tag tag-warning">#{movieBean.rating}/10</span> 
+                                            <span class="tag tag-default">#{movieBean.duration} m</span>  
+                                        </h4> 
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </ui:repeat>
+                    </h:outputLabel> 
+
                 </div>
+                <h:outputLabel  rendered="#{movieBean.id != null}"> 
+                    <div class="row">  
+                        <div class="col col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    Description
+                                </div>
+                                <div class="card-block"> 
+                                    <p class="card-text">#{movieBean.description}</p> 
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="col col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    Showing Times 
+                                </div>
+                                <div class="card-block">  
+                                    <div class="list-group">
+                                        <h:outputLabel  rendered="#{movieBean.id != null}"> 
+                                            <ui:repeat value="#{movieBean.movieTimes}" var="time">
+                                                <li class="list-group-item"> 
+                                                    <h:outputText value="#{time}" >
+                                                        <f:convertDateTime pattern="hh:mm a" />
+                                                    </h:outputText>   
+                                                    <h:form>
+                                                        <h:commandButton styleClass="btn btn-outline-danger btn-sm"  action="buy-ticket.jsf?faces-redirect=true" value="Buy Ticket" id="ticket"></h:commandButton>
+                                                    </h:form>
+                                                </li>
+                                            </ui:repeat>
+                                        </h:outputLabel> 
+                                    </div>
+                                </div>
+                            </div> 
+                        </div> 
+                    </div> 
+                </h:outputLabel> 
             </div>
         </f:view> 
     </ui:define>
